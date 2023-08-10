@@ -1,13 +1,16 @@
+// This code is for a weather app that uses the OpenWeatherMap API.
+
+// Define some variables.
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
-
 const apiKey = "fd5c3d8aa17a1cb7309612e229bf0c19"; // API key
 
+// function to create a weather card for each day in the forecast.
 function createWeatherCard (cityName, weatherItem, index) {
-    if(index === 0) { // Code for the main weather card
+    if(index === 0) {
         return `<div class="details">
                     <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
                     <h6>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
@@ -18,7 +21,7 @@ function createWeatherCard (cityName, weatherItem, index) {
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
                     <h6>${weatherItem.weather[0].description}</h6>
                 </div>`;
-    } else { // Code for the other 5 day forecast card
+    } else { // Code for other 5 day forecast card
         return `<li class="card">
                     <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
@@ -29,6 +32,7 @@ function createWeatherCard (cityName, weatherItem, index) {
     }
 }
 
+// A function to get the weather forecast for a given city
 function getWeatherDetails(cityName, latitude, longitude) {
     const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
 
