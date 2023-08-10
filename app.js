@@ -7,7 +7,7 @@ const weatherCardsDiv = document.querySelector(".weather-cards");
 const apiKey = "fd5c3d8aa17a1cb7309612e229bf0c19"; // API key
 
 function createWeatherCard (cityName, weatherItem, index) {
-    if(index === 0) { // HTML for the main weather card
+    if(index === 0) { // Code for the main weather card
         return `<div class="details">
                     <h2>${cityName} (${weatherItem.dt_txt.split(" ")[0]})</h2>
                     <h6>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
@@ -18,7 +18,7 @@ function createWeatherCard (cityName, weatherItem, index) {
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
                     <h6>${weatherItem.weather[0].description}</h6>
                 </div>`;
-    } else { // HTML for the other 5 day forecast card
+    } else { // Code for the other 5 day forecast card
         return `<li class="card">
                     <h3>(${weatherItem.dt_txt.split(" ")[0]})</h3>
                     <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
